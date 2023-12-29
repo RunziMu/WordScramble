@@ -19,19 +19,12 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section {
+                Section (header:Text("Word Scramble"),footer: Text("Don't know this word? [Dictionary...](https://www.oed.com)")){
                     TextField("Enter your word",text: $newWord)
                         .textInputAutocapitalization(.never)
                 }
-                Section {
-                    ForEach (usedWords,id: \.self) { word in
-                        HStack {
-                            Image(systemName: "\(word.count).circle")
-                            Text(word)
-                        }
-                    }
-                }
-                Section {
+
+                Section (header: Text("Action")) {
                     Button{
                         startGame()
                     } label: {
@@ -46,6 +39,16 @@ struct ContentView: View {
                         Label("Reset Game", systemImage: "arrow.circlepath")
                     }
                 }
+                
+                Section (header:Text("Used Words will appear here")) {
+                    ForEach (usedWords,id: \.self) { word in
+                        HStack {
+                            Image(systemName: "\(word.count).circle")
+                            Text(word)
+                        }
+                    }
+                }
+                
             }
             .navigationTitle(rootWord)
         }
