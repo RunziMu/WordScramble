@@ -36,11 +36,11 @@ struct ContentView: View {
                             startGame()
                         }
                     } label: {
-                        Label("Reset Game", systemImage: "arrow.circlepath")
+                        Label("Restart", systemImage: "arrow.circlepath")
                     }
                 }
                 
-                Section (header:Text("Used Words will appear here")) {
+                Section (header:Text("Used Words will appear here...")) {
                     ForEach (usedWords,id: \.self) { word in
                         HStack {
                             Image(systemName: "\(word.count).circle")
